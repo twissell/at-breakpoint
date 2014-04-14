@@ -13,6 +13,21 @@ is-string(value)
     return false
 
 /*
+ * builds a declaration string from
+ * a string of features.
+ */   
+build-declaration(features)
+  r = 'screen  and '
+  i = 1
+  features = parse-features(features)
+  for feature-name, feature-value in features
+    r  += '(' + feature-name + ': ' + feature-value + ')'
+    if i != length(features)
+      r += ' and '
+    i += 1
+  return r  
+    
+/*
  * returns a hash of media features with
  * feature names as keys and feature 
  * values as values. Has shortcuts for min 
