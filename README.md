@@ -73,3 +73,30 @@ renders
   };
 };
 ```
+
+additionaly you can print a class inside all breakpoints as follows.
+
+```
+.foo
+  +at-breakpoint('all', suffix:true)
+    display: inline-block;
+    vertical-align: top
+```
+
+renders
+
+```
+@media screen and (min-width: 349px) {
+  .foo-xs {
+    display: inline-block;
+    vertical-align: top;
+  };
+};
+
+@media screen and (min-width: 350px) and (max-width: 779px) {
+  .foo-sm {
+    display: inline-block;
+    vertical-align: top;
+  };
+};
+```
