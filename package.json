@@ -1,0 +1,36 @@
+{
+  "name": "at-breakpoint",
+  "author": "twissell / https://github.com/twissell",
+  "main": "at-breakpoint.js",
+  "version": "1.0",
+  "description": "easy media queries for stylus",
+  "keywords": [
+    "stylus",
+    "css",
+    "framework",
+    "media queries"
+  ],
+  "categories": [
+    "CSS",
+    "Frameworks",
+    "media queries"
+  ],
+  "github": "https://github.com/twissell",
+  "devDependencies": {
+    "stylus": "0.43.1"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twissell/at-breakpoint"
+  },
+  "bugs": {
+    "url": "https://github.com/twissell/at-breakpoint/issues",
+    "email": "angvillar@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/twissell/at-breakpoint",
+  "dependencies": {
+    "stylus": "^0.43.1"
+  }
+}
