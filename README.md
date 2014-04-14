@@ -74,11 +74,11 @@ renders
 };
 ```
 
-additionaly you can print a class inside all breakpoints as follows.
+additionaly you can print a class inside all breakpoints, if don't want to print a particular breakpoint add it to the excludes param as follows.
 
 ```
 .foo
-  +at-breakpoint('all', suffix:true)
+  +at-breakpoint('all', suffix:true, excludes: 'md')
     display: inline-block;
     vertical-align: top
 ```
@@ -100,3 +100,4 @@ renders
   };
 };
 ```
+
