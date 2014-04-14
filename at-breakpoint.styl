@@ -12,5 +12,40 @@ is-string(value)
   else
     return false
 
+/*
+ * returns a hash of media features with
+ * feature names as keys and feature 
+ * values as values. Has shortcuts for min 
+ * width and for min max width media querie
+ * pairs.
+ *
+ * @param string(features) 
+ *
+ * 350px -> {min-width: 350px}
+ * 350px 780px -> {min-width: 350px, max-width: 350px}
+ */    
+parse-features(features)
 
+  r = {}
 
+  i = 0
+  for _ in features
+    current = features[i]
+    next    = features[i + 1]
+
+    if is-unit(current) 
+      if is-unit(next)
+        r['min-width'] = current
+        r['max-width'] = next
+        i += 1
+      else if not is-unit(next)
+        r['min-width'] = current
+      i += 1
+    if is-string(current) 
+      if is-unit(next)
+        r[current] = next
+        i += 1
+      else
+        error('media querie feature ' + current + ' must have a value')
+      i += 1
+  return r
