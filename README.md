@@ -107,3 +107,5 @@ renders
 };
 ```
 
+## License
+MIT
