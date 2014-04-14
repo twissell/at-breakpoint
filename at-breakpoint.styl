@@ -18,21 +18,28 @@ is-string(value)
  * querie.
  *
  * @param string(bp-name)
+ * @param string(features)
+ * @param bool(suffix)
  */
 at-breakpoint(bp-name, features=null, suffix=false)
-  if bp-exists(bp-name)
-    declaration = build-declaration($bps[bp-name])
 
-    if suffix
-      &-{bp-name}
+  if bp-name == 'all'
+    for k, v in $bps
+      at-breakpoint(k, v, suffix)
+  else
+    if bp-exists(bp-name)
+      declaration = build-declaration($bps[bp-name])
+
+      if suffix
+        &-{bp-name}
+          @media declaration
+            {block}
+      else
         @media declaration
           {block}
     else
-      @media declaration
-        {block}
-  else
-    $bps[bp-name] = features
-    at-breakpoint(bp-name, features, suffix)
+      $bps[bp-name] = features
+      at-breakpoint(bp-name, features, suffix)
 
 /*
  * returns true if exists a breakpoint
@@ -101,3 +108,5 @@ parse-features(features)
         error('media querie feature ' + current + ' must have a value')
       i += 1
   return r
+
+
