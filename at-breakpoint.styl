@@ -11,6 +11,22 @@ is-string(value)
     return true
   else
     return false
+
+/*
+ * wrapper for media queries, allows
+ * to put any stylus code inside a media
+ * querie.
+ *
+ * @param string(bp-name)
+ */
+at-breakpoint(bp-name)
+  if bp-exists(bp-name)
+    declaration = build-declaration($bps[bp-name])
+    @media declaration
+      {block}
+  else
+    error('breakpoint ' + bp-name + ' not exists in ' + $bps)
+
 /*
  * returns true if exists a breakpoint
  * in $bps hash with same name, false
@@ -78,9 +94,3 @@ parse-features(features)
         error('media querie feature ' + current + ' must have a value')
       i += 1
   return r
-
-.test
-  margin: 0
-  +at-breakpoint('lg')
-    color: red
-
