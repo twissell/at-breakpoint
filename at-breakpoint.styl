@@ -19,13 +19,15 @@ is-string(value)
  *
  * @param string(bp-name)
  */
-at-breakpoint(bp-name)
+at-breakpoint(bp-name, features=null, suffix=false)
   if bp-exists(bp-name)
     declaration = build-declaration($bps[bp-name])
+
     @media declaration
       {block}
   else
-    error('breakpoint ' + bp-name + ' not exists in ' + $bps)
+    $bps[bp-name] = features
+    at-breakpoint(bp-name, features, suffix)
 
 /*
  * returns true if exists a breakpoint
@@ -47,7 +49,7 @@ bp-exists(name)
  * @param string(features)
  */   
 build-declaration(features)
-  r = 'screen  and '
+  r = 'screen and '
   i = 1
   features = parse-features(features)
   for feature-name, feature-value in features
