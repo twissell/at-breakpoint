@@ -21,11 +21,12 @@ is-string(value)
  * @param string(features)
  * @param bool(suffix)
  */
-at-breakpoint(bp-name, features=null, suffix=false)
+at-breakpoint(bp-name, features=null, suffix=false, excludes=null)
 
   if bp-name == 'all'
     for k, v in $bps
-      at-breakpoint(k, v, suffix)
+      if not k in excludes
+        at-breakpoint(k, v, suffix)
   else
     if bp-exists(bp-name)
       declaration = build-declaration($bps[bp-name])
@@ -108,5 +109,3 @@ parse-features(features)
         error('media querie feature ' + current + ' must have a value')
       i += 1
   return r
-
-
