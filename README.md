@@ -53,4 +53,23 @@ is pass the name of the breakpoint and a features string.
     display: table
 ```
 
+### print classes with breakpoint suffix
 
+here is where at-breakpoint is slighty different for other media querie libraries, it allows you to output a css class with a suffix representing the breakpoint name of the media querie, just
+pass suffix:true to at-breakpoint.
+
+```
+.foo
+  +at-breakpoint('xs', suffix:true)
+    display: block
+```
+
+renders
+
+```
+@media screen and (min-width: 349px) {
+  .foo-xs {
+    display: block;
+  };
+};
+```
