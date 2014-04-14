@@ -11,6 +11,18 @@ is-string(value)
     return true
   else
     return false
+/*
+ * returns true if exists a breakpoint
+ * in $bps hash with same name, false
+ * otherwise.
+ *
+ * @param string(name)
+ */
+bp-exists(name)    
+  for bp-name in $bps
+    if bp-name == name
+      return true
+  return false
 
 /*
  * builds a declaration string from
@@ -66,3 +78,9 @@ parse-features(features)
         error('media querie feature ' + current + ' must have a value')
       i += 1
   return r
+
+.test
+  margin: 0
+  +at-breakpoint('lg')
+    color: red
+
