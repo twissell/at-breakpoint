@@ -1,5 +1,9 @@
 @import 'breakpoints'
 
+
+$SUFFIX-MODE: true
+
+
 is-unit(value)
   if typeof(value) == 'unit'
     return true
@@ -21,7 +25,7 @@ is-string(value)
  * @param string(features)
  * @param bool(suffix)
  */
-at-breakpoint(bp-name, features=null, suffix=false, excludes=null)
+at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
 
   if bp-name == 'all'
     for k, v in $bps
