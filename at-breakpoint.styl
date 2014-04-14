@@ -23,8 +23,13 @@ at-breakpoint(bp-name, features=null, suffix=false)
   if bp-exists(bp-name)
     declaration = build-declaration($bps[bp-name])
 
-    @media declaration
-      {block}
+    if suffix
+      &-{bp-name}
+        @media declaration
+          {block}
+    else
+      @media declaration
+        {block}
   else
     $bps[bp-name] = features
     at-breakpoint(bp-name, features, suffix)
