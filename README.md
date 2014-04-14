@@ -39,3 +39,18 @@ renders
   }
 };
 ```
+
+### create new breakpoints on the flow
+
+you don't need to define a new breakpoint in the $bps hash, you can do it when you want to use that new breakpoint, at-breakpoint will add it for you to the $bps hash, the only thing you need
+is pass the name of the breakpoint and a features string.
+
+```
+.foo
+  margin: 0
+  padding: 0
+  +at-breakpoint('xl', 1560px)
+    display: table
+```
+
+
