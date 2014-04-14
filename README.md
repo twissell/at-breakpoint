@@ -13,6 +13,12 @@ define your breakpoints in the breakpoints hash inside breakpoints.styl, breakpo
   }
 ```
 
+if you want to print all your css classes with a suffix indicating the breakpoint name set $SUFFIX-MODE to true or to false otherwise.
+
+```
+$SUFFIX-MODE = true
+```
+
 ## Usage
 
 at-breakpoint is very easy to use, just call the mixin as a block inside any css selector width the name of the breakpoint as paremeter.
