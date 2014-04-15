@@ -1,20 +1,7 @@
 @import 'breakpoints'
 
 
-$SUFFIX-MODE: true
-
-
-is-unit(value)
-  if (typeof(value) == 'unit')
-    return true
-  else
-    return false
-
-is-string(value)
-  if typeof(value) == 'string'
-    return true
-  else
-    return false
+$SUFFIX-MODE = true
 
 /*
  * wrapper for media queries, allows
@@ -34,7 +21,7 @@ at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
   else
     if bp-exists(bp-name)
       declaration = build-declaration($bps[bp-name])
-      //p(declaration)
+    
       if suffix
         &-{bp-name}
           @media declaration
