@@ -1,5 +1,11 @@
 @import 'breakpoints'
 
+/*
+ * hash with all breakpoints, define
+ * here your breakpoint or use add-bp
+ * function.
+ */
+$BPS = {}
 
 $SUFFIX-MODE = true
 
@@ -16,12 +22,12 @@ $SUFFIX-MODE = true
 at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
 
   if bp-name == 'all'
-    for k, v in $bps
+    for k, v in $BPS
       if not k in excludes
         at-breakpoint(k, v, suffix)
   else
-    if bp-name in $bps
-      declaration = build-declaration($bps[bp-name])
+    if bp-name in $BPS
+      declaration = build-declaration($BPS[bp-name])
     
       if suffix
         &-{bp-name}
@@ -31,18 +37,18 @@ at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
         @media declaration
           {block}
     else
-      add-breakpoint(bp-name)
+      add-bp(bp-name)
       at-breakpoint(bp-name, features, suffix)
 
 /*
- * add a new breakpoint to $bps
+ * add a new breakpoint to $BPS
  * hash.
  *
  * @param string(name)
  * @param string(features)
  */
-add-breakpoint(name, features)
-  $bps[name] = features
+add-bp(name, features)
+  $BPS[name] = features
 
 /*
  * builds a declaration string from
@@ -92,12 +98,7 @@ parse-features(features)
     if typeof(current) == 'string' 
       if typeof(next) == 'unit'
         r[current] = next
-        i += 1
-      else
+        age
         error('media querie feature ' + current + ' must have a value')
       i += 1
   return r
-
-.foo
-  +at-breakpoint('all')
-    color: red
