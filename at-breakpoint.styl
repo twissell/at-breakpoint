@@ -31,8 +31,18 @@ at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
         @media declaration
           {block}
     else
-      $bps[bp-name] = features
+      add-breakpoint(bp-name)
       at-breakpoint(bp-name, features, suffix)
+
+/*
+ * add a new breakpoint to $bps
+ * hash.
+ *
+ * @param string(name)
+ * @param string(features)
+ */
+add-breakpoint(name, features)
+  $bps[name] = features
 
 /*
  * builds a declaration string from
@@ -87,3 +97,7 @@ parse-features(features)
         error('media querie feature ' + current + ' must have a value')
       i += 1
   return r
+
+.foo
+  +at-breakpoint('all')
+    color: red
