@@ -20,7 +20,7 @@ at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
       if not k in excludes
         at-breakpoint(k, v, suffix)
   else
-    if bp-exists(bp-name)
+    if bp-name in $bps
       declaration = build-declaration($bps[bp-name])
     
       if suffix
@@ -33,19 +33,6 @@ at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
     else
       $bps[bp-name] = features
       at-breakpoint(bp-name, features, suffix)
-
-/*
- * returns true if exists a breakpoint
- * in $bps hash with same name, false
- * otherwise.
- *
- * @param string(name)
- */
-bp-exists(name)    
-  for bp-name in $bps
-    if bp-name == name
-      return true
-  return false
 
 /*
  * builds a declaration string from
