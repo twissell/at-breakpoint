@@ -5,7 +5,7 @@ $SUFFIX-MODE: true
 
 
 is-unit(value)
-  if typeof(value) == 'unit'
+  if (typeof(value) == 'unit')
     return true
   else
     return false
@@ -34,7 +34,7 @@ at-breakpoint(bp-name, features=null, suffix=$SUFFIX-MODE, excludes=null)
   else
     if bp-exists(bp-name)
       declaration = build-declaration($bps[bp-name])
-
+      //p(declaration)
       if suffix
         &-{bp-name}
           @media declaration
@@ -91,22 +91,21 @@ build-declaration(features)
 parse-features(features)
 
   r = {}
-
   i = 0
   for _ in features
     current = features[i]
-    next    = features[i + 1]
+    next = features[i + 1]
 
-    if is-unit(current) 
-      if is-unit(next)
+    if typeof(current) == 'unit'
+      if typeof(next) == 'unit'
         r['min-width'] = current
         r['max-width'] = next
         i += 1
-      else if not is-unit(next)
+      else if typeof(next) != 'unit'
         r['min-width'] = current
       i += 1
-    if is-string(current) 
-      if is-unit(next)
+    if typeof(current) == 'string' 
+      if typeof(next) == 'unit'
         r[current] = next
         i += 1
       else
