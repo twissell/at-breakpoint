@@ -3,14 +3,20 @@ easy media queries for stylus
 
 ## Config
 
-define your breakpoints in the breakpoints hash inside breakpoints.styl, breakpoints has a name and are defined by a string indicating the feature and a value establishing when the condition will trigger. There are two shortcuts for common media features like min and max width.
+define your breakpoints in the breakpoints hash $BPS inside at-breakpoint.styl, breakpoints has a name and are defined by a string indicating the feature and a value establishing when the condition will trigger. There are two shortcuts for common media features like min and max width.
 
 ```
-  $bps = {
+  $BPS = {
     'xs': 349px,                     // (min-width: 349px)
     'sm': 350px 779px,               // (min-width: 350px) and (max-width: 779px) 
     'md': in-resolution 2dppx 780px  // (in-resolution: 2dppx) and  (min-width: 780px)
   }
+```
+
+another way to add custom breakpoints us using the add-bp func.
+
+```
+add-bp('lg', 1024px)
 ```
 
 if you want to print all your css classes with a suffix indicating the breakpoint name set $SUFFIX-MODE to true or to false otherwise.
