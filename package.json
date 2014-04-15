@@ -2,7 +2,7 @@
   "name": "at-breakpoint",
   "author": "twissell / https://github.com/twissell",
   "main": "at-breakpoint.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "easy media queries for stylus",
   "keywords": [
     "stylus",
